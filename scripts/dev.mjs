@@ -1,14 +1,20 @@
 import { spawn } from 'node:child_process';
+import { fileURLToPath } from 'node:url';
+import { dirname, join } from 'node:path';
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
+const portlessPath = join(__dirname, '..', 'node_modules', '.bin', 'portless.cmd');
 
 const nodeOptions = [process.env.NODE_OPTIONS, '--disable-warning=ExperimentalWarning']
   .filter(Boolean)
   .join(' ');
 
 const child = spawn(
-  'portless',
+  portlessPath,
   ['run', '--name', 'weather-starter', 'tsx', 'watch', 'backend/src/server.ts'],
   {
     stdio: 'inherit',
+    shell: true,
     env: {
       ...process.env,
       NODE_OPTIONS: nodeOptions,
