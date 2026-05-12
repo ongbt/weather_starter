@@ -1,7 +1,7 @@
 import { useStore } from '../state/store';
-import { CloudIcon, HomeIcon } from './icons';
+import { CloseIcon, CloudIcon, HomeIcon } from './icons';
 import { formatTemperature, formatTime } from './format';
-import type { KeyboardEvent } from 'react';
+import type { KeyboardEvent, MouseEvent } from 'react';
 import type { Location } from '../types';
 
 interface SidebarCardProps {
@@ -10,8 +10,13 @@ interface SidebarCardProps {
 }
 
 export function SidebarCard({ location, isHome }: SidebarCardProps) {
-  const { selectedId, select } = useStore();
+  const { selectedId, select, remove } = useStore();
   const isSelected = selectedId === location.id;
+
+  const onDelete = (event: MouseEvent<HTMLButtonElement>) => {
+    event.stopPropagation();
+    void remove(location.id);
+  };
   const observed = formatTime(location.weather.observed_at);
   const area =
     location.weather.area || `${location.latitude.toFixed(3)}, ${location.longitude.toFixed(3)}`;
@@ -35,12 +40,20 @@ export function SidebarCard({ location, isHome }: SidebarCardProps) {
       onClick={onSelect}
       onKeyDown={onKeyDown}
       aria-pressed={isSelected}
-      className={`relative w-full cursor-pointer overflow-hidden rounded-2xl border text-left backdrop-blur-xl transition ${
+      className={`group relative w-full cursor-pointer overflow-hidden rounded-2xl border text-left backdrop-blur-xl transition ${
         isSelected
           ? 'border-white/30 bg-white/20 shadow-lg shadow-black/20'
           : 'border-white/10 bg-white/[0.07] hover:bg-white/[0.12]'
       }`}
     >
+      <button
+        type="button"
+        onClick={onDelete}
+        aria-label={`Delete ${area}`}
+        className="absolute right-1.5 top-1.5 rounded-full p-1 text-white/30 opacity-0 transition hover:bg-white/10 hover:text-white/80 group-hover:opacity-100 focus:opacity-100"
+      >
+        <CloseIcon className="h-3.5 w-3.5" />
+      </button>
       <div className="flex items-start justify-between gap-3 px-4 pt-3">
         <div className="min-w-0">
           <div className="truncate text-lg font-semibold leading-tight text-white">{area}</div>
