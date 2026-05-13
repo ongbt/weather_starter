@@ -182,43 +182,9 @@ export class SingaporeWeatherClient {
 
   async getCurrentWeather(latitude: number, longitude: number): Promise<WeatherSnapshot> {
     const forecastPayload = await this.fetchLatestForecastPayload().catch(() => null);
-
-    const [temperature, humidity, rainfall, windSpeed, windDirection, uv, airQuality, twentyFourHour, fourDay] =
-      await Promise.all([
-        this.fetchNearestReading('air-temperature', latitude, longitude).catch(() => ({ value: null, timestamp: null })),
-        this.fetchNearestReading('relative-humidity', latitude, longitude).catch(() => ({ value: null, timestamp: null })),
-        this.fetchNearestReading('rainfall', latitude, longitude).catch(() => ({ value: null, timestamp: null })),
-        this.fetchNearestReading('wind-speed', latitude, longitude).catch(() => ({ value: null, timestamp: null })),
-        this.fetchNearestReading('wind-direction', latitude, longitude).catch(() => ({ value: null, timestamp: null })),
-        this.fetchUvIndex().catch(() => ({ value: null, timestamp: null })),
-        this.fetchAirQuality(latitude, longitude).catch(() => ({ psi: null, pm25: null, region: null, timestamp: null })),
-        this.fetchTwentyFourHourForecast(latitude, longitude).catch(() => ({ low: null, high: null, periods: [], timestamp: null })),
-        this.fetchFourDayForecast().catch(() => ({ days: [], timestamp: null })),
-      ]);
-
-    const base = forecastPayload
+    return forecastPayload
       ? this.snapshotFromPayload(forecastPayload, latitude, longitude)
       : this.emptyForecastSnapshot();
-
-    const snapshot: WeatherSnapshot = {
-      ...base,
-      temperature_c: temperature.value ?? base.temperature_c,
-      humidity_percent: humidity.value ?? base.humidity_percent,
-      rainfall_mm: rainfall.value ?? base.rainfall_mm,
-      wind_speed_knots: windSpeed.value ?? base.wind_speed_knots,
-      wind_direction_degrees: windDirection.value ?? base.wind_direction_degrees,
-      uv_index: uv.value ?? base.uv_index,
-      psi_twenty_four_hourly: airQuality.psi ?? base.psi_twenty_four_hourly,
-      pm25_one_hourly: airQuality.pm25 ?? base.pm25_one_hourly,
-      air_quality_region: airQuality.region ?? base.air_quality_region,
-      forecast_low_c: twentyFourHour.low ?? base.forecast_low_c,
-      forecast_high_c: twentyFourHour.high ?? base.forecast_high_c,
-      forecast_periods: twentyFourHour.periods.length > 0 ? twentyFourHour.periods : base.forecast_periods,
-      daily_forecast: fourDay.days.length > 0 ? fourDay.days : base.daily_forecast,
-    };
-
-    console.log('[weather] getCurrentWeather →', snapshot);
-    return snapshot;
   }
 
   async fetchLatestForecastPayload(): Promise<ForecastPayload> {
@@ -255,12 +221,10 @@ export class SingaporeWeatherClient {
         .filter((entry): entry is [string, number] => Boolean(entry[0]) && !Number.isNaN(entry[1])),
     );
     const station = nearestStation(stations, latitude, longitude, valueByStation);
-    const result = {
+    return {
       value: station ? (valueByStation.get(station.id) ?? null) : null,
       timestamp: latestReading?.timestamp ?? null,
     };
-    console.log(`[weather] fetchNearestReading(${endpoint}) →`, result);
-    return result;
   }
 
   async fetchReadingPayload(endpoint: string): Promise<ReadingPayload> {
@@ -277,12 +241,10 @@ export class SingaporeWeatherClient {
 
     const record = payload.data?.records?.[0];
     const latest = record?.index?.[0];
-    const result = {
+    return {
       value: numberOrNull(latest?.value),
       timestamp: record?.updatedTimestamp ?? latest?.hour ?? record?.timestamp ?? null,
     };
-    console.log('[weather] fetchUvIndex →', result);
-    return result;
   }
 
   async fetchAirQuality(
@@ -309,7 +271,7 @@ export class SingaporeWeatherClient {
     const region = nearestRegionName(psiPayload.data?.regionMetadata ?? [], latitude, longitude);
     const psiItem = psiPayload.data?.items?.[0];
     const pm25Item = pm25Payload.data?.items?.[0];
-    const result = {
+    return {
       psi: valueForRegion(psiItem?.readings?.psi_twenty_four_hourly, region),
       pm25: valueForRegion(pm25Item?.readings?.pm25_one_hourly, region),
       region,
@@ -318,8 +280,6 @@ export class SingaporeWeatherClient {
         pm25Item?.updatedTimestamp ?? pm25Item?.timestamp ?? null,
       ]),
     };
-    console.log('[weather] fetchAirQuality →', result);
-    return result;
   }
 
   async fetchTwentyFourHourForecast(
@@ -342,7 +302,7 @@ export class SingaporeWeatherClient {
 
     const record = payload.data?.records?.[0];
     const region = nearestRegionName(defaultRegions(), latitude, longitude) ?? 'central';
-    const result = {
+    return {
       low: numberOrNull(record?.general?.temperature?.low),
       high: numberOrNull(record?.general?.temperature?.high),
       periods: (record?.periods ?? [])
@@ -353,8 +313,6 @@ export class SingaporeWeatherClient {
         .filter((period) => period.label && period.forecast),
       timestamp: record?.updatedTimestamp ?? record?.timestamp ?? null,
     };
-    console.log('[weather] fetchTwentyFourHourForecast →', result);
-    return result;
   }
 
   async fetchFourDayForecast(): Promise<{ days: DailyForecast[]; timestamp: string | null }> {
@@ -362,7 +320,7 @@ export class SingaporeWeatherClient {
       `${this.legacyApiBaseUrl()}/v1/environment/4-day-weather-forecast`,
     );
     const item = payload.items?.[0];
-    const result = {
+    return {
       days: (item?.forecasts ?? [])
         .map((forecast) => ({
           date: forecast.date ?? forecast.timestamp ?? '',
@@ -373,8 +331,6 @@ export class SingaporeWeatherClient {
         .filter((forecast) => forecast.date && forecast.forecast),
       timestamp: item?.update_timestamp ?? item?.timestamp ?? null,
     };
-    console.log('[weather] fetchFourDayForecast →', result);
-    return result;
   }
 
   private apiBaseUrl(): string {
@@ -409,9 +365,7 @@ export class SingaporeWeatherClient {
         throw new WeatherProviderError(`Weather provider returned HTTP ${response.status}`);
       }
 
-      const json = (await response.json()) as T;
-      console.log(`[weather] ${url} → status ${response.status}`, json);
-      return json;
+      return (await response.json()) as T;
     } catch (error) {
       if (error instanceof WeatherProviderError) throw error;
       throw new WeatherProviderError('Unable to reach weather provider');
