@@ -148,3 +148,20 @@ export function CloseIcon({ className = 'h-3.5 w-3.5' }: IconProps) {
     </svg>
   );
 }
+
+export function MapPinIcon({ className = 'h-3.5 w-3.5' }: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" className={className} {...base}>
+      <path d="M12 22s-8-6.5-8-11a8 8 0 0 1 16 0c0 4.5-8 11-8 11Z" />
+      <circle cx="12" cy="11" r="3" />
+    </svg>
+  );
+}
+
+export function ExpandIcon({ className = 'h-3.5 w-3.5' }: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" className={className} {...base}>
+      <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" />
+    </svg>
+  );
+}

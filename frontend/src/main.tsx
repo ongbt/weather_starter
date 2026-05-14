@@ -1,6 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { App } from './App';
+import 'leaflet/dist/leaflet.css';
+import './components/map.css';
 import './index.css';
 
 const root = document.getElementById('root');
