@@ -110,13 +110,13 @@ export function MapCard() {
 
   if (fullscreen) {
     return createPortal(
-      <div className="fixed inset-0 z-50 flex flex-col bg-black/95 backdrop-blur-xl">
+      <div className="fixed inset-0 z-50 flex flex-col bg-[var(--overlay-heavy)] backdrop-blur-xl">
         <div className="relative flex-1">
           <MapInner fullscreen locations={locations} onMarkerClick={handleMarkerClick} />
           <button
             type="button"
             onClick={() => setFullscreen(false)}
-            className="absolute right-4 top-4 z-[1000] flex h-10 w-10 items-center justify-center rounded-full border border-white/20 bg-black/50 text-white/80 backdrop-blur-md hover:bg-white/15 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/40"
+            className="absolute right-4 top-4 z-[1000] flex h-10 w-10 items-center justify-center rounded-full border border-[var(--border-compass)] bg-[var(--overlay-bg)] text-[var(--text-icon)] backdrop-blur-md hover:bg-[var(--surface-14)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--focus-ring)]"
             aria-label="Close map"
           >
             <CloseIcon className="h-5 w-5" />
@@ -128,16 +128,16 @@ export function MapCard() {
   }
 
   return (
-    <section className="flex flex-col gap-3 rounded-2xl border border-white/15 bg-white/[0.08] backdrop-blur-xl">
+    <section className="flex flex-col gap-3 rounded-2xl border border-[var(--border-card)] bg-[var(--surface-08)] backdrop-blur-xl">
       <header className="flex items-center justify-between px-4 pt-4">
-        <div className="flex items-center gap-1.5 text-[11px] font-semibold uppercase tracking-[0.14em] text-white/60">
+        <div className="flex items-center gap-1.5 text-[11px] font-semibold uppercase tracking-[0.14em] text-[var(--text-label)]">
           <MapPinIcon className="h-3.5 w-3.5" />
           <span>Map</span>
         </div>
         <button
           type="button"
           onClick={() => setFullscreen(true)}
-          className="rounded-full border border-white/15 bg-white/[0.08] p-1.5 text-white/70 hover:bg-white/[0.14] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/40"
+          className="rounded-full border border-[var(--border-card)] bg-[var(--surface-08)] p-1.5 text-[var(--text-secondary)] hover:bg-[var(--surface-14)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--focus-ring)]"
           aria-label="Expand map"
         >
           <ExpandIcon className="h-4 w-4" />

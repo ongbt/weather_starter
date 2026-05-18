@@ -10,10 +10,7 @@ body,
 
 body {
   @apply text-white antialiased;
-  background:
-    radial-gradient(120% 80% at 70% 0%, rgba(255, 255, 255, 0.18) 0%, transparent 55%),
-    radial-gradient(90% 70% at 10% 100%, rgba(80, 110, 150, 0.55) 0%, transparent 60%),
-    linear-gradient(170deg, #6f8aa8 0%, #5a7591 35%, #4a627c 65%, #3c5066 100%);
+  background: var(--body-bg);
   background-attachment: fixed;
   background-repeat: no-repeat;
 }
@@ -25,7 +22,8 @@ input {
 
 button:focus-visible,
 input:focus-visible {
-  @apply outline-none ring-2 ring-white/40 ring-offset-0;
+  @apply outline-none ring-2 ring-offset-0;
+  --tw-ring-color: var(--focus-ring);
 }
 
 ::-webkit-scrollbar {
@@ -34,10 +32,10 @@ input:focus-visible {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.18);
+  background: var(--scrollbar-thumb);
   border-radius: 9999px;
 }
 
 ::-webkit-scrollbar-track {
-  background: transparent;
+  background: var(--scrollbar-track);
 }

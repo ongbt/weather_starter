@@ -158,6 +158,19 @@ export function MapPinIcon({ className = 'h-3.5 w-3.5' }: IconProps) {
   );
 }
 
+export function PaletteIcon({ className = 'h-3.5 w-3.5' }: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" className={className} {...base}>
+      <circle cx="12" cy="12" r="10" />
+      <path d="M12 2a10 10 0 0 1 0 20" />
+      <circle cx="8" cy="9" r="1.5" fill="currentColor" stroke="none" />
+      <circle cx="16" cy="7" r="1.5" fill="currentColor" stroke="none" />
+      <circle cx="6" cy="14" r="1.5" fill="currentColor" stroke="none" />
+      <circle cx="14" cy="16" r="1.5" fill="currentColor" stroke="none" />
+    </svg>
+  );
+}
+
 export function ExpandIcon({ className = 'h-3.5 w-3.5' }: IconProps) {
   return (
     <svg viewBox="0 0 24 24" className={className} {...base}>
