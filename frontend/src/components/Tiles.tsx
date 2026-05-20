@@ -139,7 +139,9 @@ function Compass({ speed, direction }: CompassProps) {
 
   return (
     <div className="relative h-20 w-20 rounded-full border border-[var(--border-compass)] bg-[var(--surface-04)]">
-      <span className="absolute left-1/2 top-1 -translate-x-1/2 text-[10px] text-[var(--text-muted)]">N</span>
+      <span className="absolute left-1/2 top-1 -translate-x-1/2 text-[10px] text-[var(--text-muted)]">
+        N
+      </span>
       <span className="absolute right-1.5 top-1/2 -translate-y-1/2 text-[10px] text-[var(--text-muted)]">
         E
       </span>
@@ -156,7 +158,9 @@ function Compass({ speed, direction }: CompassProps) {
         />
       )}
       <div className="absolute inset-0 flex flex-col items-center justify-center">
-        <span className="text-base font-light leading-none text-[var(--text-near-primary)]">{speed}</span>
+        <span className="text-base font-light leading-none text-[var(--text-near-primary)]">
+          {speed}
+        </span>
         <span className="text-[10px] text-[var(--text-muted)]">km/h</span>
       </div>
     </div>
@@ -184,7 +188,9 @@ export function UVTile({ weather }: WeatherProps) {
         max={11}
         gradientClass="bg-gradient-to-r from-emerald-400 via-yellow-300 via-orange-400 to-fuchsia-500"
       />
-      <p className="mt-3 text-xs leading-snug text-[var(--text-secondary)]">Latest nationwide UVI reading.</p>
+      <p className="mt-3 text-xs leading-snug text-[var(--text-secondary)]">
+        Latest nationwide UVI reading.
+      </p>
     </TileShell>
   );
 }
@@ -209,7 +215,9 @@ export function PrecipitationTile({ weather }: WeatherProps) {
         {formatNumber(weather?.rainfall_mm, 1)} mm
       </div>
       <div className="mt-1 text-sm text-[var(--text-body)]">Latest reading</div>
-      <p className="mt-3 text-xs leading-snug text-[var(--text-secondary)]">Nearest realtime rainfall station.</p>
+      <p className="mt-3 text-xs leading-snug text-[var(--text-secondary)]">
+        Nearest realtime rainfall station.
+      </p>
     </TileShell>
   );
 }
@@ -220,7 +228,9 @@ export function HumidityTile({ weather }: WeatherProps) {
       <div className="text-4xl font-light leading-none tabular-nums text-[var(--text-primary)]">
         {formatNumber(weather?.humidity_percent)}%
       </div>
-      <p className="mt-3 text-xs leading-snug text-[var(--text-secondary)]">Nearest realtime humidity station.</p>
+      <p className="mt-3 text-xs leading-snug text-[var(--text-secondary)]">
+        Nearest realtime humidity station.
+      </p>
     </TileShell>
   );
 }

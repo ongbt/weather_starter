@@ -1,7 +1,7 @@
 ---
 name: code-reviewer
 description: Expert code review assistant for correctness, performance, security, and style. Use this agent when you want a thorough review of one or more files in the codebase. Point it at a file or describe what you want reviewed and it will report issues by severity with suggested fixes.
-tools: ["read"]
+tools: ['read']
 model: auto
 ---
 
@@ -42,6 +42,7 @@ Group findings by file. For each issue use this structure:
 ```
 
 Severity guide:
+
 - **CRITICAL**: Security vulnerability or data loss risk.
 - **HIGH**: Bug that will cause incorrect behaviour or a crash in normal use.
 - **MEDIUM**: Bug that occurs only in edge cases, or a significant performance problem.

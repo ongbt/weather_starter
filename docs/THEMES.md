@@ -6,31 +6,32 @@ This document records all proposed and implemented themes for the Weather Starte
 
 ## Implementation status
 
-| #   | Name             | Key              | Status        |
-| --- | ---------------- | ---------------- | ------------- |
+| #   | Name             | Key              | Status         |
+| --- | ---------------- | ---------------- | -------------- |
 | 1   | Apple            | `apple`          | ✅ Implemented |
 | 2   | Midnight Ink     | `midnight-ink`   | ✅ Implemented |
 | 3   | Sunbleached      | `sunbleached`    | ✅ Implemented |
 | 4   | Tropical Night   | `tropical-night` | ✅ Implemented |
 | 5   | Monsoon          | `monsoon`        | ✅ Implemented |
-| 6   | Botanical Garden | —                | Proposed      |
-| 7   | Marina Bay       | —                | Proposed      |
-| 8   | Hawker Centre    | —                | Proposed      |
-| 9   | Terminal         | —                | Proposed      |
-| 10  | Pastel Forecast  | —                | Proposed      |
-| 11  | Brutalist        | —                | Proposed      |
-| 12  | Sunset Gradient  | —                | Proposed      |
-| 13  | Cloudy Day       | —                | Proposed      |
-| 14  | Neon City        | —                | Proposed      |
-| 15  | Parchment        | —                | Proposed      |
-| 16  | High Altitude    | —                | Proposed      |
-| 17  | Void Deck        | —                | Proposed      |
+| 6   | Botanical Garden | —                | Proposed       |
+| 7   | Marina Bay       | —                | Proposed       |
+| 8   | Hawker Centre    | —                | Proposed       |
+| 9   | Terminal         | —                | Proposed       |
+| 10  | Pastel Forecast  | —                | Proposed       |
+| 11  | Brutalist        | —                | Proposed       |
+| 12  | Sunset Gradient  | —                | Proposed       |
+| 13  | Cloudy Day       | —                | Proposed       |
+| 14  | Neon City        | —                | Proposed       |
+| 15  | Parchment        | —                | Proposed       |
+| 16  | High Altitude    | —                | Proposed       |
+| 17  | Void Deck        | —                | Proposed       |
 
 ---
 
 ## Implemented themes
 
 ### 1. Apple
+
 > The default theme. Frosted-glass aesthetic inspired by Apple's Weather app.
 
 - **Colors:** Blue-grey radial gradient background (`#6f8aa8` → `#3c5066`), white text at varying opacities
@@ -42,6 +43,7 @@ This document records all proposed and implemented themes for the Weather Starte
 ---
 
 ### 2. Midnight Ink
+
 > Deep near-black with violet accents for a focused, editorial dark mode.
 
 - **Colors:** Near-black base (`#0a0a0f`), cool off-white text (`#f0f0f5`), violet accent (`#7c3aed`)
@@ -53,6 +55,7 @@ This document records all proposed and implemented themes for the Weather Starte
 ---
 
 ### 3. Sunbleached
+
 > Warm parchment tones evoking sun-faded paper and tropical heat.
 
 - **Colors:** Warm cream gradient (`#fef7ed` → `#fce0ad`), deep brown text (`#3a1e08`), amber accent (`#b45309`)
@@ -64,6 +67,7 @@ This document records all proposed and implemented themes for the Weather Starte
 ---
 
 ### 4. Tropical Night
+
 > Deep navy and electric teal inspired by Singapore's skyline after dark.
 
 - **Colors:** Near-black navy base (`#050d1a`) with teal radial glow, aqua-tinted white text (`#e8fffe`), electric teal accent (`#00d2c8`)
@@ -77,6 +81,7 @@ This document records all proposed and implemented themes for the Weather Starte
 ## Proposed themes
 
 ### 5. Monsoon
+
 > Moody blue-grey palette capturing the drama of heavy tropical rain.
 
 - **Colors:** `slate-800` background, steel-blue accents, muted white text
@@ -87,6 +92,7 @@ This document records all proposed and implemented themes for the Weather Starte
 ---
 
 ### 6. Botanical Garden
+
 > Lush greens and earthy tones inspired by Singapore's Gardens by the Bay.
 
 - **Colors:** `emerald-900` base, `lime-400` accents, cream text
@@ -97,6 +103,7 @@ This document records all proposed and implemented themes for the Weather Starte
 ---
 
 ### 7. Marina Bay
+
 > Clean whites and blues reflecting the bay's modern waterfront architecture.
 
 - **Colors:** `sky-50` background, `cobalt-600` accents, dark charcoal text
@@ -107,6 +114,7 @@ This document records all proposed and implemented themes for the Weather Starte
 ---
 
 ### 8. Hawker Centre
+
 > Warm reds and yellows drawing from the vibrant colors of local food stalls.
 
 - **Colors:** `red-700` primary, golden-yellow accents, off-white background
@@ -117,6 +125,7 @@ This document records all proposed and implemented themes for the Weather Starte
 ---
 
 ### 9. Terminal
+
 > Monochrome green-on-black terminal aesthetic for developer appeal.
 
 - **Colors:** Black background, phosphor green (`#00FF41`) text and accents
@@ -127,6 +136,7 @@ This document records all proposed and implemented themes for the Weather Starte
 ---
 
 ### 10. Pastel Forecast
+
 > Soft pastels and rounded shapes for a friendly, approachable look.
 
 - **Colors:** `lavender-100` background, `pink-300` and `sky-300` accents, dark text
@@ -137,6 +147,7 @@ This document records all proposed and implemented themes for the Weather Starte
 ---
 
 ### 11. Brutalist
+
 > Bold, raw, high-contrast design with no decorative softening.
 
 - **Colors:** Pure white background, pure black text, `yellow-400` highlights
@@ -147,6 +158,7 @@ This document records all proposed and implemented themes for the Weather Starte
 ---
 
 ### 12. Sunset Gradient
+
 > Warm gradient washes from coral to violet mimicking tropical sunsets.
 
 - **Colors:** `coral-500` → `violet-700` gradient background, white text
@@ -157,6 +169,7 @@ This document records all proposed and implemented themes for the Weather Starte
 ---
 
 ### 13. Cloudy Day
+
 > Neutral greys and whites for a calm, minimal overcast aesthetic.
 
 - **Colors:** `zinc-100` background, `zinc-500` accents, `zinc-900` text
@@ -167,6 +180,7 @@ This document records all proposed and implemented themes for the Weather Starte
 ---
 
 ### 14. Neon City
+
 > Cyberpunk-inspired dark theme with vivid neon pink and cyan.
 
 - **Colors:** `gray-950` base, neon-pink and cyan accents, white text
@@ -177,6 +191,7 @@ This document records all proposed and implemented themes for the Weather Starte
 ---
 
 ### 15. Parchment
+
 > Warm sepia tones evoking old maps and colonial-era Singapore.
 
 - **Colors:** Parchment (`#F5E6C8`) background, `brown-800` text, rust accents
@@ -187,6 +202,7 @@ This document records all proposed and implemented themes for the Weather Starte
 ---
 
 ### 16. High Altitude
+
 > Crisp whites and icy blues inspired by looking down from above the clouds.
 
 - **Colors:** White base, `ice-blue-200` accents, deep `blue-900` text
@@ -197,6 +213,7 @@ This document records all proposed and implemented themes for the Weather Starte
 ---
 
 ### 17. Void Deck
+
 > Muted concrete tones referencing Singapore's iconic HDB void decks.
 
 - **Colors:** `stone-200` background, `stone-600` accents, near-black text

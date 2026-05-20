@@ -65,7 +65,9 @@ export function TenDayForecast({ weather }: TenDayForecastProps) {
                 key={day.date}
                 className="grid grid-cols-[5rem_2rem_3rem_1fr_3rem] items-center gap-3 px-4 py-3 text-sm"
               >
-                <span className="font-medium text-[var(--text-primary)]">{labelForDate(day.date, index)}</span>
+                <span className="font-medium text-[var(--text-primary)]">
+                  {labelForDate(day.date, index)}
+                </span>
                 <CloudIcon className="h-5 w-5 text-[var(--text-icon)]" />
                 <span className="tabular-nums text-[var(--text-label)]">
                   {formatTemperature(day.temperature_low_c)}

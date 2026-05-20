@@ -21,7 +21,7 @@ const child = spawn(
       PORTLESS_HTTPS: process.env.PORTLESS_HTTPS ?? '0',
       PORTLESS_PORT: process.env.PORTLESS_PORT ?? '1355',
     },
-  },
+  }
 );
 
 child.on('exit', (code, signal) => {

@@ -55,11 +55,15 @@ export function Hero() {
           <div className="mt-1 text-sm text-[var(--text-secondary)] tabular-nums">
             H:{high} L:{low}
           </div>
-          {observed && <div className="mt-3 text-xs text-[var(--text-muted)]">Updated {observed}</div>}
+          {observed && (
+            <div className="mt-3 text-xs text-[var(--text-muted)]">Updated {observed}</div>
+          )}
         </header>
 
         {validPeriod && (
-          <p className="px-2 pb-1 text-center text-xs text-[var(--text-label-heavy)]">{validPeriod}</p>
+          <p className="px-2 pb-1 text-center text-xs text-[var(--text-label-heavy)]">
+            {validPeriod}
+          </p>
         )}
 
         <HourlyStrip periods={selected.weather?.forecast_periods} />

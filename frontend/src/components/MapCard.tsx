@@ -29,7 +29,7 @@ function MapBounds({ locations }: { locations: Location[] }) {
   useEffect(() => {
     if (locations.length === 0) return;
     const bounds = L.latLngBounds(
-      locations.map((l) => [l.latitude, l.longitude] as [number, number]),
+      locations.map((l) => [l.latitude, l.longitude] as [number, number])
     );
     if (bounds.isValid()) {
       map.fitBounds(bounds, { padding: [40, 40], maxZoom: 12 });
@@ -39,7 +39,13 @@ function MapBounds({ locations }: { locations: Location[] }) {
   return null;
 }
 
-function MapMarkers({ locations, onClick }: { locations: Location[]; onClick: (id: number) => void }) {
+function MapMarkers({
+  locations,
+  onClick,
+}: {
+  locations: Location[];
+  onClick: (id: number) => void;
+}) {
   return (
     <>
       {locations.map((loc) => (
@@ -64,9 +70,7 @@ function MapInner({
   onMarkerClick: (id: number) => void;
 }) {
   const center: [number, number] =
-    locations.length > 0
-      ? [locations[0].latitude, locations[0].longitude]
-      : [1.3521, 103.8198];
+    locations.length > 0 ? [locations[0].latitude, locations[0].longitude] : [1.3521, 103.8198];
 
   return (
     <MapContainer
@@ -103,7 +107,7 @@ export function MapCard() {
       select(id);
       setFullscreen(false);
     },
-    [select],
+    [select]
   );
 
   if (locations.length === 0) return null;
@@ -123,7 +127,7 @@ export function MapCard() {
           </button>
         </div>
       </div>,
-      document.body,
+      document.body
     );
   }
 

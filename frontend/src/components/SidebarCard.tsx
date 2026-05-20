@@ -77,7 +77,9 @@ export function SidebarCard({ location, isHome }: SidebarCardProps) {
             )}
           </div>
         </div>
-        <div className="text-3xl font-light tabular-nums text-[var(--text-near-primary)]">{temperature}</div>
+        <div className="text-3xl font-light tabular-nums text-[var(--text-near-primary)]">
+          {temperature}
+        </div>
       </div>
       <div className="mt-3 flex items-center justify-between border-t border-[var(--border-divider)] px-4 py-2 text-xs">
         <div className="flex items-center gap-2 text-[var(--text-icon)]">

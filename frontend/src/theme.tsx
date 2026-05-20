@@ -124,8 +124,7 @@ const midnightInkTheme: ThemeConfig = {
 const sunbleachedTheme: ThemeConfig = {
   name: 'sunbleached',
   label: 'Sunbleached',
-  bodyBg:
-    'linear-gradient(170deg, #fef7ed 0%, #fef0d5 35%, #fde8c0 65%, #fce0ad 100%)',
+  bodyBg: 'linear-gradient(170deg, #fef7ed 0%, #fef0d5 35%, #fde8c0 65%, #fce0ad 100%)',
   surface04: 'rgba(180, 120, 60, 0.04)',
   surface06: 'rgba(180, 120, 60, 0.06)',
   surface07: '#fef7ed',
@@ -206,8 +205,7 @@ const tropicalNightTheme: ThemeConfig = {
 const monsoonTheme: ThemeConfig = {
   name: 'monsoon',
   label: 'Monsoon',
-  bodyBg:
-    'linear-gradient(170deg, #1e2a38 0%, #1a2535 35%, #172030 65%, #131c2a 100%)',
+  bodyBg: 'linear-gradient(170deg, #1e2a38 0%, #1a2535 35%, #172030 65%, #131c2a 100%)',
   surface04: 'rgba(148, 180, 210, 0.04)',
   surface06: 'rgba(148, 180, 210, 0.06)',
   surface07: '#1e2a38',
@@ -244,7 +242,13 @@ const monsoonTheme: ThemeConfig = {
   scrollbarTrack: 'transparent',
 };
 
-const themes: ThemeConfig[] = [appleTheme, midnightInkTheme, sunbleachedTheme, tropicalNightTheme, monsoonTheme];
+const themes: ThemeConfig[] = [
+  appleTheme,
+  midnightInkTheme,
+  sunbleachedTheme,
+  tropicalNightTheme,
+  monsoonTheme,
+];
 
 function applyTheme(t: ThemeConfig) {
   const root = document.documentElement;
@@ -310,9 +314,7 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
   };
 
   return (
-    <ThemeContext.Provider value={{ theme, themes, setTheme }}>
-      {children}
-    </ThemeContext.Provider>
+    <ThemeContext.Provider value={{ theme, themes, setTheme }}>{children}</ThemeContext.Provider>
   );
 }
 

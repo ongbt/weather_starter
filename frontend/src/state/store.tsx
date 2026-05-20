@@ -69,7 +69,7 @@ export function StoreProvider({ children }: ProviderProps) {
         throw err;
       }
     },
-    [load],
+    [load]
   );
 
   const remove = useCallback(
@@ -89,7 +89,7 @@ export function StoreProvider({ children }: ProviderProps) {
         });
       }
     },
-    [load, selectedId],
+    [load, selectedId]
   );
 
   const refresh = useCallback(
@@ -111,7 +111,7 @@ export function StoreProvider({ children }: ProviderProps) {
         setRefreshingId(null);
       }
     },
-    [load],
+    [load]
   );
 
   const value: StoreValue = {
